@@ -57,7 +57,6 @@ export const FormularioReserva = () => {
   const [errores, setErrores] = useState<ErroresReserva>({});
   const [numeroTelefono, setNumeroTelefono] = useState("526624509876");
 
-  // 🌟 ESTADOS NUEVOS: Control de la vista de éxito y persistencia de URL de WhatsApp
   const [enviado, setEnviado] = useState(false);
   const [whatsappUrl, setWhatsappUrl] = useState("");
 
