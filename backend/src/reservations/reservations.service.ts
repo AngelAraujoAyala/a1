@@ -1,17 +1,29 @@
-import { Injectable, ConflictException } from '@nestjs/common';
-
+import { Injectable, ConflictException, BadRequestException, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-
 import { CreateReservationDto } from './dto/create-reservation.dto';
 
 @Injectable()
 export class ReservationsService {
   constructor(private prisma: PrismaService) {}
 
+  private formatDateToYMD(date: Date): string {
+    const year = date.getUTCFullYear();
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
   async create(data: CreateReservationDto) {
     const fechaInicio = new Date(data.fechaInicio);
-
     const fechaFin = new Date(data.fechaFin);
+
+    if (isNaN(fechaInicio.getTime()) || isNaN(fechaFin.getTime())) {
+      throw new BadRequestException('Las fechas proporcionadas no son válidas.');
+    }
+
+    if (fechaFin <= fechaInicio) {
+      throw new BadRequestException('La fecha de fin debe ser posterior a la fecha de inicio.');
+    }
 
     // VALIDAR OVERLAPS
     const overlappingReservation = await this.prisma.reservation.findFirst({
@@ -42,12 +54,11 @@ export class ReservationsService {
       },
     });
 
+    const fechaInicioYMD = this.formatDateToYMD(fechaInicio);
+
     const hayBloqueo = bloqueos.some((bloqueo) => {
-      const onlyDate = bloqueo.fecha.toISOString().split('T')[0];
-
-      const bloqueoDate = new Date(`${onlyDate}T00:00:00`);
-
-      return fechaInicio.toDateString() === bloqueoDate.toDateString();
+      const bloqueoYMD = this.formatDateToYMD(new Date(bloqueo.fecha));
+      return fechaInicioYMD === bloqueoYMD;
     });
 
     if (hayBloqueo) {
@@ -58,30 +69,21 @@ export class ReservationsService {
     return this.prisma.reservation.create({
       data: {
         nombreCliente: data.nombreCliente,
-
         emailCliente: data.emailCliente,
-
         telefono: data.telefono,
-
         fechaInicio,
         fechaFin,
-
         lugar: data.lugar,
-
         packageId: data.packageId,
-
         estado: data.estado ?? 'PENDIENTE',
-
         toppings: {
-          create: data.toppingsIds.map((toppingId) => ({
+          create: (data.toppingsIds || []).map((toppingId) => ({
             toppingId,
           })),
         },
       },
-
       include: {
         package: true,
-
         toppings: {
           include: {
             topping: true,
@@ -95,14 +97,12 @@ export class ReservationsService {
     return this.prisma.reservation.findMany({
       include: {
         package: true,
-
         toppings: {
           include: {
             topping: true,
           },
         },
       },
-
       orderBy: {
         createdAt: 'desc',
       },
@@ -110,12 +110,10 @@ export class ReservationsService {
   }
 
   async findOne(id: number) {
-    return this.prisma.reservation.findUnique({
+    const reservation = await this.prisma.reservation.findUnique({
       where: { id },
-
       include: {
         package: true,
-
         toppings: {
           include: {
             topping: true,
@@ -123,12 +121,18 @@ export class ReservationsService {
         },
       },
     });
+
+    if (!reservation) {
+      throw new NotFoundException(`La reserva con ID ${id} no existe.`);
+    }
+
+    return reservation;
   }
 
   async updateStatus(id: number, estado: string) {
+    await this.findOne(id);
     return this.prisma.reservation.update({
       where: { id },
-
       data: {
         estado: estado as any,
       },
@@ -136,6 +140,8 @@ export class ReservationsService {
   }
 
   async remove(id: number) {
+    await this.findOne(id);
+
     // ELIMINAR RELACIONES PRIMERO
     await this.prisma.reservaTopping.deleteMany({
       where: {

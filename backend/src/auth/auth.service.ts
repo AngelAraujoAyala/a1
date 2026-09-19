@@ -1,7 +1,8 @@
 import {
   Injectable,
   UnauthorizedException,
-  NotFoundException, // <--- Esto elimina el error 'Cannot find name'
+  NotFoundException,
+  BadRequestException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../prisma/prisma.service';
@@ -16,7 +17,12 @@ export class AuthService {
   ) {}
 
   async login(email: string, pass: string) {
-    const admin = await this.prisma.admin.findUnique({ where: { email } });
+    if (!email || !pass) {
+      throw new BadRequestException('Email y contraseña son requeridos');
+    }
+
+    const cleanEmail = email.toLowerCase().trim();
+    const admin = await this.prisma.admin.findUnique({ where: { email: cleanEmail } });
 
     if (!admin) {
       throw new UnauthorizedException('Credenciales inválidas');
@@ -34,7 +40,6 @@ export class AuthService {
   }
 
   async getPublicConfig() {
-    // Si da error aquí, ejecuta 'npx prisma generate' en tu terminal
     const admin = await this.prisma.admin.findFirst({
       select: { whatsappNumber: true },
     });
@@ -55,13 +60,16 @@ export class AuthService {
     id: number,
     data: { email: string; password?: string; whatsappNumber: string },
   ) {
-    // Usamos el tipo exacto de Prisma para evitar conflictos de ESLint
+    const cleanEmail = data.email?.toLowerCase().trim();
     const updateData: Prisma.AdminUpdateInput = {
-      email: data.email,
+      email: cleanEmail,
       whatsappNumber: data.whatsappNumber,
     };
 
     if (data.password && data.password.trim() !== '') {
+      if (data.password.length < 8) {
+        throw new BadRequestException('La contraseña debe tener al menos 8 caracteres');
+      }
       updateData.password = await bcrypt.hash(data.password, 10);
     }
 
@@ -72,3 +80,4 @@ export class AuthService {
     });
   }
 }
+

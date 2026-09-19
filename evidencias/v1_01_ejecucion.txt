@@ -1,0 +1,370 @@
+FAIL src/packages/packages.service.spec.ts (8.9 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+  ● PackagesService › should be defined
+
+    Nest can't resolve dependencies of the PackagesService (?). Please make sure that the argument PrismaService at index [0] is available in the RootTestModule module.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If PrismaService is a provider, is it part of the current RootTestModule?
+    - If PrismaService is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing PrismaService */ ]
+      })
+
+    For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeEach([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({
+     [90m    |[39m                                   [31m[1m^[22m[39m
+     [90m  9 |[39m       providers[33m:[39m [[33mPackagesService[39m][33m,[39m
+     [90m 10 |[39m     })[33m.[39mcompile()[33m;[39m
+     [90m 11 |[39m[0m
+
+      at TestingInjector.lookupComponentInParentModules (../node_modules/@nestjs/core/injector/injector.js:290:19)
+      at TestingInjector.resolveComponentWrapper (../node_modules/@nestjs/testing/testing-injector.js:19:45)
+      at resolveParam (../node_modules/@nestjs/core/injector/injector.js:140:38)
+          at async Promise.all (index 0)
+      at TestingInjector.resolveConstructorParams (../node_modules/@nestjs/core/injector/injector.js:169:27)
+      at TestingInjector.loadInstance (../node_modules/@nestjs/core/injector/injector.js:75:13)
+      at TestingInjector.loadProvider (../node_modules/@nestjs/core/injector/injector.js:103:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 1)
+      at TestingInstanceLoader.createInstances (../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (packages/packages.service.spec.ts:8:35)
+
+PASS src/app.controller.spec.ts (9.056 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+FAIL src/reservations/reservations.service.spec.ts (9.376 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+  ● ReservationsService › should be defined
+
+    Nest can't resolve dependencies of the ReservationsService (?). Please make sure that the argument PrismaService at index [0] is available in the RootTestModule module.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If PrismaService is a provider, is it part of the current RootTestModule?
+    - If PrismaService is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing PrismaService */ ]
+      })
+
+    For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeEach([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({
+     [90m    |[39m                                   [31m[1m^[22m[39m
+     [90m  9 |[39m       providers[33m:[39m [[33mReservationsService[39m][33m,[39m
+     [90m 10 |[39m     })[33m.[39mcompile()[33m;[39m
+     [90m 11 |[39m[0m
+
+      at TestingInjector.lookupComponentInParentModules (../node_modules/@nestjs/core/injector/injector.js:290:19)
+      at TestingInjector.resolveComponentWrapper (../node_modules/@nestjs/testing/testing-injector.js:19:45)
+      at resolveParam (../node_modules/@nestjs/core/injector/injector.js:140:38)
+          at async Promise.all (index 0)
+      at TestingInjector.resolveConstructorParams (../node_modules/@nestjs/core/injector/injector.js:169:27)
+      at TestingInjector.loadInstance (../node_modules/@nestjs/core/injector/injector.js:75:13)
+      at TestingInjector.loadProvider (../node_modules/@nestjs/core/injector/injector.js:103:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 1)
+      at TestingInstanceLoader.createInstances (../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (reservations/reservations.service.spec.ts:8:35)
+
+FAIL src/toppings/toppings.service.spec.ts (9.506 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+  ● ToppingsService › should be defined
+
+    Nest can't resolve dependencies of the ToppingsService (?). Please make sure that the argument PrismaService at index [0] is available in the RootTestModule module.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If PrismaService is a provider, is it part of the current RootTestModule?
+    - If PrismaService is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing PrismaService */ ]
+      })
+
+    For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeEach([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({
+     [90m    |[39m                                   [31m[1m^[22m[39m
+     [90m  9 |[39m       providers[33m:[39m [[33mToppingsService[39m][33m,[39m
+     [90m 10 |[39m     })[33m.[39mcompile()[33m;[39m
+     [90m 11 |[39m[0m
+
+      at TestingInjector.lookupComponentInParentModules (../node_modules/@nestjs/core/injector/injector.js:290:19)
+      at TestingInjector.resolveComponentWrapper (../node_modules/@nestjs/testing/testing-injector.js:19:45)
+      at resolveParam (../node_modules/@nestjs/core/injector/injector.js:140:38)
+          at async Promise.all (index 0)
+      at TestingInjector.resolveConstructorParams (../node_modules/@nestjs/core/injector/injector.js:169:27)
+      at TestingInjector.loadInstance (../node_modules/@nestjs/core/injector/injector.js:75:13)
+      at TestingInjector.loadProvider (../node_modules/@nestjs/core/injector/injector.js:103:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 1)
+      at TestingInstanceLoader.createInstances (../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (toppings/toppings.service.spec.ts:8:35)
+
+PASS src/prisma/prisma.service.spec.ts (9.453 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+FAIL src/reservations/reservations.controller.spec.ts (9.787 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+  ● ReservationsController › should be defined
+
+    Nest can't resolve dependencies of the ReservationsService (?). Please make sure that the argument PrismaService at index [0] is available in the RootTestModule module.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If PrismaService is a provider, is it part of the current RootTestModule?
+    - If PrismaService is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing PrismaService */ ]
+      })
+
+    For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+
+    [0m [90m  7 |[39m
+     [90m  8 |[39m   beforeEach([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  9 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({
+     [90m    |[39m                                   [31m[1m^[22m[39m
+     [90m 10 |[39m       controllers[33m:[39m [[33mReservationsController[39m][33m,[39m
+     [90m 11 |[39m       providers[33m:[39m [[33mReservationsService[39m][33m,[39m
+     [90m 12 |[39m     })[33m.[39mcompile()[33m;[39m[0m
+
+      at TestingInjector.lookupComponentInParentModules (../node_modules/@nestjs/core/injector/injector.js:290:19)
+      at TestingInjector.resolveComponentWrapper (../node_modules/@nestjs/testing/testing-injector.js:19:45)
+      at resolveParam (../node_modules/@nestjs/core/injector/injector.js:140:38)
+          at async Promise.all (index 0)
+      at TestingInjector.resolveConstructorParams (../node_modules/@nestjs/core/injector/injector.js:169:27)
+      at TestingInjector.loadInstance (../node_modules/@nestjs/core/injector/injector.js:75:13)
+      at TestingInjector.loadProvider (../node_modules/@nestjs/core/injector/injector.js:103:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 1)
+      at TestingInstanceLoader.createInstances (../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (reservations/reservations.controller.spec.ts:9:35)
+
+FAIL src/packages/packages.controller.spec.ts (9.958 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+  ● PackagesController › should be defined
+
+    Nest can't resolve dependencies of the PackagesService (?). Please make sure that the argument PrismaService at index [0] is available in the RootTestModule module.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If PrismaService is a provider, is it part of the current RootTestModule?
+    - If PrismaService is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing PrismaService */ ]
+      })
+
+    For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+
+    [0m [90m  7 |[39m
+     [90m  8 |[39m   beforeEach([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  9 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({
+     [90m    |[39m                                   [31m[1m^[22m[39m
+     [90m 10 |[39m       controllers[33m:[39m [[33mPackagesController[39m][33m,[39m
+     [90m 11 |[39m       providers[33m:[39m [[33mPackagesService[39m][33m,[39m
+     [90m 12 |[39m     })[33m.[39mcompile()[33m;[39m[0m
+
+      at TestingInjector.lookupComponentInParentModules (../node_modules/@nestjs/core/injector/injector.js:290:19)
+      at TestingInjector.resolveComponentWrapper (../node_modules/@nestjs/testing/testing-injector.js:19:45)
+      at resolveParam (../node_modules/@nestjs/core/injector/injector.js:140:38)
+          at async Promise.all (index 0)
+      at TestingInjector.resolveConstructorParams (../node_modules/@nestjs/core/injector/injector.js:169:27)
+      at TestingInjector.loadInstance (../node_modules/@nestjs/core/injector/injector.js:75:13)
+      at TestingInjector.loadProvider (../node_modules/@nestjs/core/injector/injector.js:103:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 1)
+      at TestingInstanceLoader.createInstances (../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (packages/packages.controller.spec.ts:9:35)
+
+FAIL src/toppings/toppings.controller.spec.ts (10.311 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+  ● ToppingsController › should be defined
+
+    Nest can't resolve dependencies of the ToppingsService (?). Please make sure that the argument PrismaService at index [0] is available in the RootTestModule module.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If PrismaService is a provider, is it part of the current RootTestModule?
+    - If PrismaService is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing PrismaService */ ]
+      })
+
+    For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+
+    [0m [90m  7 |[39m
+     [90m  8 |[39m   beforeEach([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  9 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({
+     [90m    |[39m                                   [31m[1m^[22m[39m
+     [90m 10 |[39m       controllers[33m:[39m [[33mToppingsController[39m][33m,[39m
+     [90m 11 |[39m       providers[33m:[39m [[33mToppingsService[39m][33m,[39m
+     [90m 12 |[39m     })[33m.[39mcompile()[33m;[39m[0m
+
+      at TestingInjector.lookupComponentInParentModules (../node_modules/@nestjs/core/injector/injector.js:290:19)
+      at TestingInjector.resolveComponentWrapper (../node_modules/@nestjs/testing/testing-injector.js:19:45)
+      at resolveParam (../node_modules/@nestjs/core/injector/injector.js:140:38)
+          at async Promise.all (index 0)
+      at TestingInjector.resolveConstructorParams (../node_modules/@nestjs/core/injector/injector.js:169:27)
+      at TestingInjector.loadInstance (../node_modules/@nestjs/core/injector/injector.js:75:13)
+      at TestingInjector.loadProvider (../node_modules/@nestjs/core/injector/injector.js:103:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 1)
+      at TestingInstanceLoader.createInstances (../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (toppings/toppings.controller.spec.ts:9:35)
+
+A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks. Active timers can also cause this, ensure that .unref() was called on them.
+-----------------------------|---------|----------|---------|---------|-------------------
+File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------------|---------|----------|---------|---------|-------------------
+All files                    |   31.64 |    40.59 |    4.76 |   30.37 |                   
+ src                         |   36.11 |       50 |      75 |      30 |                   
+  app.controller.ts          |     100 |       75 |     100 |     100 | 6                 
+  app.module.ts              |       0 |      100 |     100 |       0 | 1-25              
+  app.service.ts             |     100 |      100 |     100 |     100 |                   
+  main.ts                    |       0 |        0 |       0 |       0 | 1-29              
+ src/auth                    |       0 |        0 |       0 |       0 |                   
+  auth.controller.ts         |       0 |        0 |       0 |       0 | 1-54              
+  auth.module.ts             |       0 |      100 |       0 |       0 | 1-26              
+  auth.service.ts            |       0 |        0 |       0 |       0 | 1-68              
+  jwt-auth.guard.ts          |       0 |      100 |     100 |       0 | 1-5               
+  jwt.strategy.ts            |       0 |        0 |       0 |       0 | 1-21              
+ src/bloqueos                |       0 |        0 |       0 |       0 |                   
+  bloqueos.controller.ts     |       0 |        0 |       0 |       0 | 1-21              
+  bloqueos.module.ts         |       0 |      100 |     100 |       0 | 1-14              
+  bloqueos.service.ts        |       0 |        0 |       0 |       0 | 1-37              
+ src/bloqueos/dto            |       0 |      100 |       0 |       0 |                   
+  create-bloqueo.dto.ts      |       0 |      100 |       0 |       0 | 1-23              
+ src/packages                |   48.48 |       75 |       0 |   44.44 |                   
+  packages.controller.ts     |   68.75 |       75 |       0 |   64.28 | 8,12,17,22,27     
+  packages.module.ts         |       0 |      100 |     100 |       0 | 1-11              
+  packages.service.ts        |      50 |       75 |       0 |    37.5 | 8-30              
+ src/packages/dto            |     100 |      100 |     100 |     100 |                   
+  create-package.dto.ts      |     100 |      100 |     100 |     100 |                   
+  update-package.dto.ts      |     100 |      100 |     100 |     100 |                   
+ src/packages/entities       |       0 |      100 |     100 |       0 |                   
+  package.entity.ts          |       0 |      100 |     100 |       0 | 1                 
+ src/prisma                  |   45.45 |      100 |       0 |   42.85 |                   
+  prisma.module.ts           |       0 |      100 |     100 |       0 | 1-8               
+  prisma.service.ts          |   83.33 |      100 |       0 |      75 | 7                 
+ src/reservations            |   32.65 |       50 |       0 |    27.9 |                   
+  reservations.controller.ts |    64.7 |       75 |       0 |      60 | 17,24,29,34,39,44 
+  reservations.module.ts     |       0 |      100 |     100 |       0 | 1-11              
+  reservations.service.ts    |      20 |       30 |       0 |   13.04 | 9-146             
+ src/reservations/dto        |      80 |       75 |     100 |      80 |                   
+  create-reservation.dto.ts  |     100 |       75 |     100 |     100 | 36                
+  update-reservation.dto.ts  |       0 |      100 |     100 |       0 | 1-4               
+ src/reservations/entities   |       0 |      100 |     100 |       0 |                   
+  reservation.entity.ts      |       0 |      100 |     100 |       0 | 1                 
+ src/supabase                |     100 |      100 |     100 |     100 |                   
+  supabase.client.ts         |     100 |      100 |     100 |     100 |                   
+ src/toppings                |   44.18 |    60.86 |       0 |   40.54 |                   
+  toppings.controller.ts     |   68.42 |     64.7 |       0 |    64.7 | 9,13,24,29,35,40  
+  toppings.module.ts         |       0 |      100 |     100 |       0 | 1-11              
+  toppings.service.ts        |   35.29 |       50 |       0 |   26.66 | 9-57              
+ src/toppings/dto            |     100 |      100 |     100 |     100 |                   
+  create-topping.dto.ts      |     100 |      100 |     100 |     100 |                   
+  update-topping.dto.ts      |     100 |      100 |     100 |     100 |                   
+ src/toppings/entities       |       0 |      100 |     100 |       0 |                   
+  topping.entity.ts          |       0 |      100 |     100 |       0 | 1                 
+-----------------------------|---------|----------|---------|---------|-------------------
+Test Suites: 6 failed, 2 passed, 8 total
+Tests:       6 failed, 2 passed, 8 total
+Snapshots:   0 total
+Time:        16.926 s, estimated 25 s
+Ran all test suites.

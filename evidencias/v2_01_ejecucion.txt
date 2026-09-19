@@ -1,0 +1,156 @@
+PASS src/bloqueos/bloqueos.controller.spec.ts (6.967 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+PASS src/bloqueos/bloqueos.service.spec.ts (7.125 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+PASS src/prisma/prisma.service.spec.ts (7.249 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+PASS src/reservations/reservations.service.spec.ts (7.302 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+PASS src/packages/packages.service.spec.ts (7.436 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+PASS src/toppings/toppings.service.spec.ts (7.526 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+PASS src/auth/auth.controller.spec.ts (7.624 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+PASS src/auth/auth.service.spec.ts (7.823 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+PASS src/app.controller.spec.ts
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+PASS src/packages/packages.controller.spec.ts (7.858 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+PASS src/reservations/reservations.controller.spec.ts (7.998 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+PASS src/toppings/toppings.controller.spec.ts (8.492 s)
+  ● Console
+
+    console.log
+      [32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNest.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+
+      at new oA (../../../../Users/arauj/.vscode/extensions/wallabyjs.console-ninja-1.0.541/out/buildHook/index.js:1:4281246)
+
+-----------------------------|---------|----------|---------|---------|-------------------
+File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------------|---------|----------|---------|---------|-------------------
+All files                    |   70.44 |    74.35 |   89.06 |   71.28 |                   
+ src                         |   36.11 |       50 |      75 |      30 |                   
+  app.controller.ts          |     100 |       75 |     100 |     100 | 6                 
+  app.module.ts              |       0 |      100 |     100 |       0 | 1-25              
+  app.service.ts             |     100 |      100 |     100 |     100 |                   
+  main.ts                    |       0 |        0 |       0 |       0 | 1-29              
+ src/auth                    |   73.33 |    81.25 |   76.92 |    74.6 |                   
+  auth.controller.ts         |     100 |       75 |     100 |     100 | 25                
+  auth.module.ts             |       0 |      100 |       0 |       0 | 1-26              
+  auth.service.ts            |     100 |    88.46 |     100 |     100 | 15,69             
+  jwt-auth.guard.ts          |     100 |      100 |     100 |     100 |                   
+  jwt.strategy.ts            |       0 |        0 |       0 |       0 | 1-21              
+ src/bloqueos                |   75.86 |       75 |     100 |   78.26 |                   
+  bloqueos.controller.ts     |     100 |       75 |     100 |     100 | 7                 
+  bloqueos.module.ts         |       0 |      100 |     100 |       0 | 1-14              
+  bloqueos.service.ts        |     100 |       75 |     100 |     100 | 9                 
+ src/bloqueos/dto            |       0 |      100 |       0 |       0 |                   
+  create-bloqueo.dto.ts      |       0 |      100 |       0 |       0 | 1-23              
+ src/packages                |   78.78 |       75 |     100 |   81.48 |                   
+  packages.controller.ts     |     100 |       75 |     100 |     100 | 8-21              
+  packages.module.ts         |       0 |      100 |     100 |       0 | 1-11              
+  packages.service.ts        |     100 |       75 |     100 |     100 | 8                 
+ src/packages/dto            |     100 |      100 |     100 |     100 |                   
+  create-package.dto.ts      |     100 |      100 |     100 |     100 |                   
+  update-package.dto.ts      |     100 |      100 |     100 |     100 |                   
+ src/packages/entities       |       0 |      100 |     100 |       0 |                   
+  package.entity.ts          |       0 |      100 |     100 |       0 | 1                 
+ src/prisma                  |   45.45 |      100 |       0 |   42.85 |                   
+  prisma.module.ts           |       0 |      100 |     100 |       0 | 1-8               
+  prisma.service.ts          |   83.33 |      100 |       0 |      75 | 7                 
+ src/reservations            |   87.09 |    82.14 |     100 |   89.28 |                   
+  reservations.controller.ts |     100 |       75 |     100 |     100 | 17-22             
+  reservations.module.ts     |       0 |      100 |     100 |       0 | 1-11              
+  reservations.service.ts    |   97.36 |       85 |     100 |   97.22 | 21                
+ src/reservations/dto        |      80 |       75 |     100 |      80 |                   
+  create-reservation.dto.ts  |     100 |       75 |     100 |     100 | 36                
+  update-reservation.dto.ts  |       0 |      100 |     100 |       0 | 1-4               
+ src/reservations/entities   |       0 |      100 |     100 |       0 |                   
+  reservation.entity.ts      |       0 |      100 |     100 |       0 | 1                 
+ src/supabase                |     100 |      100 |     100 |     100 |                   
+  supabase.client.ts         |     100 |      100 |     100 |     100 |                   
+ src/toppings                |   69.76 |    60.86 |   91.66 |   70.27 |                   
+  toppings.controller.ts     |     100 |     64.7 |     100 |     100 | 9-34              
+  toppings.module.ts         |       0 |      100 |     100 |       0 | 1-11              
+  toppings.service.ts        |    64.7 |       50 |   83.33 |      60 | 41-57             
+ src/toppings/dto            |     100 |      100 |     100 |     100 |                   
+  create-topping.dto.ts      |     100 |      100 |     100 |     100 |                   
+  update-topping.dto.ts      |     100 |      100 |     100 |     100 |                   
+ src/toppings/entities       |       0 |      100 |     100 |       0 |                   
+  topping.entity.ts          |       0 |      100 |     100 |       0 | 1                 
+-----------------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 12 passed, 12 total
+Tests:       63 passed, 63 total
+Snapshots:   0 total
+Time:        12.671 s
+Ran all test suites.
