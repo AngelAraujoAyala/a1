@@ -4,7 +4,6 @@ import { ReservationsService } from './reservations.service';
 
 describe('ReservationsController', () => {
   let controller: ReservationsController;
-  let service: ReservationsService;
 
   const mockReservationsService = {
     create: jest.fn(),
@@ -26,7 +25,6 @@ describe('ReservationsController', () => {
     }).compile();
 
     controller = module.get<ReservationsController>(ReservationsController);
-    service = module.get<ReservationsService>(ReservationsService);
   });
 
   afterEach(() => {
@@ -94,7 +92,10 @@ describe('ReservationsController', () => {
 
       // Assert
       expect(result).toEqual(expected);
-      expect(mockReservationsService.updateStatus).toHaveBeenCalledWith(1, 'COMPLETADA');
+      expect(mockReservationsService.updateStatus).toHaveBeenCalledWith(
+        1,
+        'COMPLETADA',
+      );
     });
   });
 

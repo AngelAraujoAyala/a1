@@ -4,7 +4,6 @@ import { PrismaService } from '../prisma/prisma.service';
 
 describe('PackagesService', () => {
   let service: PackagesService;
-  let prisma: PrismaService;
 
   const mockPrismaService = {
     package: {
@@ -27,7 +26,6 @@ describe('PackagesService', () => {
     }).compile();
 
     service = module.get<PackagesService>(PackagesService);
-    prisma = module.get<PrismaService>(PrismaService);
   });
 
   afterEach(() => {
@@ -41,16 +39,22 @@ describe('PackagesService', () => {
   describe('create', () => {
     it('debe crear un nuevo paquete correctamente (AAA)', async () => {
       // Arrange
-      const dto = { nombre: 'Paquete VIP', precio: 1500, descripcion: 'Incluye todo' };
+      const dto = {
+        nombre: 'Paquete VIP',
+        precio: 1500,
+        descripcion: 'Incluye todo',
+      };
       const expectedResult = { id: 1, ...dto };
       mockPrismaService.package.create.mockResolvedValue(expectedResult);
 
       // Act
-      const result = await service.create(dto as any);
+      const result = await service.create(dto);
 
       // Assert
       expect(result).toEqual(expectedResult);
-      expect(mockPrismaService.package.create).toHaveBeenCalledWith({ data: dto });
+      expect(mockPrismaService.package.create).toHaveBeenCalledWith({
+        data: dto,
+      });
     });
   });
 
@@ -68,7 +72,9 @@ describe('PackagesService', () => {
 
       // Assert
       expect(result).toEqual(expectedPackages);
-      expect(mockPrismaService.package.findMany).toHaveBeenCalledWith({ orderBy: { precio: 'asc' } });
+      expect(mockPrismaService.package.findMany).toHaveBeenCalledWith({
+        orderBy: { precio: 'asc' },
+      });
     });
   });
 
@@ -80,7 +86,7 @@ describe('PackagesService', () => {
       mockPrismaService.package.update.mockResolvedValue(updatedPackage);
 
       // Act
-      const result = await service.update(1, dto as any);
+      const result = await service.update(1, dto);
 
       // Assert
       expect(result).toEqual(updatedPackage);
@@ -102,7 +108,9 @@ describe('PackagesService', () => {
 
       // Assert
       expect(result).toEqual(deletedPackage);
-      expect(mockPrismaService.package.delete).toHaveBeenCalledWith({ where: { id: 1 } });
+      expect(mockPrismaService.package.delete).toHaveBeenCalledWith({
+        where: { id: 1 },
+      });
     });
   });
 });

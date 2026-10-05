@@ -1,4 +1,9 @@
-import { Injectable, ConflictException, BadRequestException, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  ConflictException,
+  BadRequestException,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateReservationDto } from './dto/create-reservation.dto';
 
@@ -18,11 +23,15 @@ export class ReservationsService {
     const fechaFin = new Date(data.fechaFin);
 
     if (isNaN(fechaInicio.getTime()) || isNaN(fechaFin.getTime())) {
-      throw new BadRequestException('Las fechas proporcionadas no son válidas.');
+      throw new BadRequestException(
+        'Las fechas proporcionadas no son válidas.',
+      );
     }
 
     if (fechaFin <= fechaInicio) {
-      throw new BadRequestException('La fecha de fin debe ser posterior a la fecha de inicio.');
+      throw new BadRequestException(
+        'La fecha de fin debe ser posterior a la fecha de inicio.',
+      );
     }
 
     // VALIDAR OVERLAPS

@@ -4,7 +4,6 @@ import { PrismaService } from '../prisma/prisma.service';
 
 describe('ToppingsService', () => {
   let service: ToppingsService;
-  let prisma: PrismaService;
 
   const mockPrismaService = {
     topping: {
@@ -27,7 +26,6 @@ describe('ToppingsService', () => {
     }).compile();
 
     service = module.get<ToppingsService>(ToppingsService);
-    prisma = module.get<PrismaService>(PrismaService);
   });
 
   afterEach(() => {
@@ -49,7 +47,9 @@ describe('ToppingsService', () => {
 
       // Assert
       expect(result).toEqual(expectedToppings);
-      expect(mockPrismaService.topping.findMany).toHaveBeenCalledWith({ orderBy: { nombre: 'asc' } });
+      expect(mockPrismaService.topping.findMany).toHaveBeenCalledWith({
+        orderBy: { nombre: 'asc' },
+      });
     });
   });
 
@@ -61,11 +61,13 @@ describe('ToppingsService', () => {
       mockPrismaService.topping.create.mockResolvedValue(expected);
 
       // Act
-      const result = await service.create(dto as any);
+      const result = await service.create(dto);
 
       // Assert
       expect(result).toEqual(expected);
-      expect(mockPrismaService.topping.create).toHaveBeenCalledWith({ data: dto });
+      expect(mockPrismaService.topping.create).toHaveBeenCalledWith({
+        data: dto,
+      });
     });
   });
 
@@ -81,7 +83,10 @@ describe('ToppingsService', () => {
 
       // Assert
       expect(result).toEqual(expected);
-      expect(mockPrismaService.topping.update).toHaveBeenCalledWith({ where: { id: 1 }, data: dto });
+      expect(mockPrismaService.topping.update).toHaveBeenCalledWith({
+        where: { id: 1 },
+        data: dto,
+      });
     });
   });
 
@@ -96,7 +101,9 @@ describe('ToppingsService', () => {
 
       // Assert
       expect(result).toEqual(expected);
-      expect(mockPrismaService.topping.delete).toHaveBeenCalledWith({ where: { id: 1 } });
+      expect(mockPrismaService.topping.delete).toHaveBeenCalledWith({
+        where: { id: 1 },
+      });
     });
   });
 });

@@ -13,7 +13,6 @@ export const LoginPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Si la dueña ya está autenticada y por error entra aquí, la mandamos al panel
   React.useEffect(() => {
     if (isAuthenticated) {
       navigate('/admin/reservas', { replace: true });
@@ -28,7 +27,6 @@ export const LoginPage: React.FC = () => {
     try {
       const response = await authService.login(email, password);
       login(response.access_token);
-      // Redirección inmediata al panel de control principal tras el éxito
       navigate('/admin/reservas', { replace: true });
     } catch (err: any) {
       setError(err.message || 'Ocurrió un error al iniciar sesión');
@@ -41,7 +39,6 @@ export const LoginPage: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
         
-        {/* Encabezado / Branding */}
         <div className="text-center">
           <span className="text-3xl font-extrabold tracking-tight text-orange-600 block">
             CrujiSnacks

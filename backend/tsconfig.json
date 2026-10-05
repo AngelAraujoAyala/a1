@@ -5,6 +5,7 @@
     "paths": {
       "src/*": ["./src/*"]
     },
+    "types": ["node", "jest"],
     "esModuleInterop": true,
     "isolatedModules": true,
     "declaration": true,

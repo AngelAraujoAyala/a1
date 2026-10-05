@@ -4,7 +4,6 @@ import { PrismaService } from '../prisma/prisma.service';
 
 describe('BloqueosService', () => {
   let service: BloqueosService;
-  let prisma: PrismaService;
 
   const mockPrismaService = {
     bloqueoFecha: {
@@ -26,7 +25,6 @@ describe('BloqueosService', () => {
     }).compile();
 
     service = module.get<BloqueosService>(BloqueosService);
-    prisma = module.get<PrismaService>(PrismaService);
   });
 
   afterEach(() => {
@@ -40,12 +38,21 @@ describe('BloqueosService', () => {
   describe('create', () => {
     it('debe crear un bloqueo de fecha (Positivo)', async () => {
       // Arrange
-      const dto = { fecha: '2026-12-25', horaInicio: '09:00', horaFin: '18:00', motivo: 'Navidad' };
-      const expected = { id: 1, ...dto, fecha: new Date('2026-12-25T00:00:00') };
+      const dto = {
+        fecha: '2026-12-25',
+        horaInicio: '09:00',
+        horaFin: '18:00',
+        motivo: 'Navidad',
+      };
+      const expected = {
+        id: 1,
+        ...dto,
+        fecha: new Date('2026-12-25T00:00:00'),
+      };
       mockPrismaService.bloqueoFecha.create.mockResolvedValue(expected);
 
       // Act
-      const result = await service.create(dto as any);
+      const result = await service.create(dto);
 
       // Assert
       expect(result).toEqual(expected);
@@ -64,7 +71,9 @@ describe('BloqueosService', () => {
 
       // Assert
       expect(result).toEqual(expectedList);
-      expect(mockPrismaService.bloqueoFecha.findMany).toHaveBeenCalledWith({ orderBy: { fecha: 'asc' } });
+      expect(mockPrismaService.bloqueoFecha.findMany).toHaveBeenCalledWith({
+        orderBy: { fecha: 'asc' },
+      });
     });
   });
 
@@ -79,7 +88,9 @@ describe('BloqueosService', () => {
 
       // Assert
       expect(result).toEqual(expected);
-      expect(mockPrismaService.bloqueoFecha.delete).toHaveBeenCalledWith({ where: { id: 1 } });
+      expect(mockPrismaService.bloqueoFecha.delete).toHaveBeenCalledWith({
+        where: { id: 1 },
+      });
     });
   });
 });

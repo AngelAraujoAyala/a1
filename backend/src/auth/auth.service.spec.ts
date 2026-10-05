@@ -2,13 +2,12 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
-import { UnauthorizedException, NotFoundException, BadRequestException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
+import { UnauthorizedException, BadRequestException } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common';
 
 describe('AuthService', () => {
   let service: AuthService;
-  let prisma: PrismaService;
-  let jwtService: JwtService;
 
   const mockPrismaService = {
     admin: {
@@ -38,8 +37,6 @@ describe('AuthService', () => {
     }).compile();
 
     service = module.get<AuthService>(AuthService);
-    prisma = module.get<PrismaService>(PrismaService);
-    jwtService = module.get<JwtService>(JwtService);
   });
 
   afterEach(() => {
@@ -55,7 +52,11 @@ describe('AuthService', () => {
       // Arrange
       const rawPassword = 'password123';
       const hashedPassword = await bcrypt.hash(rawPassword, 10);
-      const admin = { id: 1, email: 'admin@test.com', password: hashedPassword };
+      const admin = {
+        id: 1,
+        email: 'admin@test.com',
+        password: hashedPassword,
+      };
 
       mockPrismaService.admin.findUnique.mockResolvedValue(admin);
       mockJwtService.signAsync.mockResolvedValue('jwt_token_123');
@@ -65,8 +66,13 @@ describe('AuthService', () => {
 
       // Assert
       expect(result).toEqual({ access_token: 'jwt_token_123' });
-      expect(mockPrismaService.admin.findUnique).toHaveBeenCalledWith({ where: { email: 'admin@test.com' } });
-      expect(mockJwtService.signAsync).toHaveBeenCalledWith({ sub: 1, email: 'admin@test.com' });
+      expect(mockPrismaService.admin.findUnique).toHaveBeenCalledWith({
+        where: { email: 'admin@test.com' },
+      });
+      expect(mockJwtService.signAsync).toHaveBeenCalledWith({
+        sub: 1,
+        email: 'admin@test.com',
+      });
     });
 
     it('debe lanzar UnauthorizedException si el usuario no existe (Negativo)', async () => {
@@ -74,29 +80,42 @@ describe('AuthService', () => {
       mockPrismaService.admin.findUnique.mockResolvedValue(null);
 
       // Act & Assert
-      await expect(service.login('noexiste@test.com', 'password')).rejects.toThrow(UnauthorizedException);
+      await expect(
+        service.login('noexiste@test.com', 'password'),
+      ).rejects.toThrow(UnauthorizedException);
     });
 
     it('debe lanzar UnauthorizedException si la contraseña no coincide (Negativo)', async () => {
       // Arrange
       const hashedPassword = await bcrypt.hash('correcto', 10);
-      const admin = { id: 1, email: 'admin@test.com', password: hashedPassword };
+      const admin = {
+        id: 1,
+        email: 'admin@test.com',
+        password: hashedPassword,
+      };
       mockPrismaService.admin.findUnique.mockResolvedValue(admin);
 
       // Act & Assert
-      await expect(service.login('admin@test.com', 'incorrecto')).rejects.toThrow(UnauthorizedException);
+      await expect(
+        service.login('admin@test.com', 'incorrecto'),
+      ).rejects.toThrow(UnauthorizedException);
     });
 
     it('debe lanzar BadRequestException si falta email o password (Límite)', async () => {
       // Act & Assert
-      await expect(service.login('', 'pass')).rejects.toThrow(BadRequestException);
+      await expect(service.login('', 'pass')).rejects.toThrow(
+        BadRequestException,
+      );
     });
   });
 
   describe('getProfile', () => {
     it('debe retornar el perfil si el administrador existe', async () => {
       // Arrange
-      const profile = { email: 'admin@test.com', whatsappNumber: '526624509876' };
+      const profile = {
+        email: 'admin@test.com',
+        whatsappNumber: '526624509876',
+      };
       mockPrismaService.admin.findUnique.mockResolvedValue(profile);
 
       // Act
@@ -118,8 +137,15 @@ describe('AuthService', () => {
   describe('updateProfile', () => {
     it('debe actualizar el perfil con nueva contraseña válida (Positivo / Seguridad)', async () => {
       // Arrange
-      const updateData = { email: 'nuevo@test.com', password: 'newPassword123', whatsappNumber: '526620001122' };
-      const updatedProfile = { email: 'nuevo@test.com', whatsappNumber: '526620001122' };
+      const updateData = {
+        email: 'nuevo@test.com',
+        password: 'newPassword123',
+        whatsappNumber: '526620001122',
+      };
+      const updatedProfile = {
+        email: 'nuevo@test.com',
+        whatsappNumber: '526620001122',
+      };
       mockPrismaService.admin.update.mockResolvedValue(updatedProfile);
 
       // Act
@@ -132,10 +158,16 @@ describe('AuthService', () => {
 
     it('debe lanzar BadRequestException si la contraseña es menor a 8 caracteres (OWASP A07)', async () => {
       // Arrange
-      const updateData = { email: 'nuevo@test.com', password: 'short', whatsappNumber: '526620001122' };
+      const updateData = {
+        email: 'nuevo@test.com',
+        password: 'short',
+        whatsappNumber: '526620001122',
+      };
 
       // Act & Assert
-      await expect(service.updateProfile(1, updateData)).rejects.toThrow(BadRequestException);
+      await expect(service.updateProfile(1, updateData)).rejects.toThrow(
+        BadRequestException,
+      );
     });
   });
 

@@ -4,7 +4,6 @@ import { AuthService } from './auth.service';
 
 describe('AuthController', () => {
   let controller: AuthController;
-  let service: AuthService;
 
   const mockAuthService = {
     login: jest.fn(),
@@ -25,7 +24,6 @@ describe('AuthController', () => {
     }).compile();
 
     controller = module.get<AuthController>(AuthController);
-    service = module.get<AuthService>(AuthService);
   });
 
   afterEach(() => {
@@ -48,7 +46,10 @@ describe('AuthController', () => {
 
       // Assert
       expect(result).toEqual(expected);
-      expect(mockAuthService.login).toHaveBeenCalledWith(body.email, body.password);
+      expect(mockAuthService.login).toHaveBeenCalledWith(
+        body.email,
+        body.password,
+      );
     });
   });
 
@@ -71,7 +72,10 @@ describe('AuthController', () => {
     it('debe retornar el perfil utilizando req.user.userId', async () => {
       // Arrange
       const req = { user: { userId: 1 } } as any;
-      const expected = { email: 'admin@test.com', whatsappNumber: '526624509876' };
+      const expected = {
+        email: 'admin@test.com',
+        whatsappNumber: '526624509876',
+      };
       mockAuthService.getProfile.mockResolvedValue(expected);
 
       // Act

@@ -1,12 +1,23 @@
-import { Controller, Get, Post, UploadedFile, UseInterceptors, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  UploadedFile,
+  UseInterceptors,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ToppingsService } from './toppings.service';
 import { CreateToppingDto } from './dto/create-topping.dto';
 import { UpdateToppingDto } from './dto/update-topping.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { Express } from 'multer';
 
 @Controller('toppings')
 export class ToppingsController {
-  constructor(private readonly toppingsService: ToppingsService) { }
+  constructor(private readonly toppingsService: ToppingsService) {}
 
   @Post()
   create(@Body() createToppingDto: CreateToppingDto) {
@@ -14,13 +25,8 @@ export class ToppingsController {
   }
 
   @Post('upload')
-  @UseInterceptors(
-    FileInterceptor('file'),
-  )
-  uploadFile(
-    @UploadedFile() file: Express.Multer.File,
-  ) {
-
+  @UseInterceptors(FileInterceptor('file'))
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
     return this.toppingsService.uploadImage(file);
   }
 
@@ -28,7 +34,6 @@ export class ToppingsController {
   findAll() {
     return this.toppingsService.findAll();
   }
-
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateToppingDto: UpdateToppingDto) {

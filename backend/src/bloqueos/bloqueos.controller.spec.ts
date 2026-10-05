@@ -4,7 +4,6 @@ import { BloqueosService } from './bloqueos.service';
 
 describe('BloqueosController', () => {
   let controller: BloqueosController;
-  let service: BloqueosService;
 
   const mockBloqueosService = {
     create: jest.fn(),
@@ -24,7 +23,6 @@ describe('BloqueosController', () => {
     }).compile();
 
     controller = module.get<BloqueosController>(BloqueosController);
-    service = module.get<BloqueosService>(BloqueosService);
   });
 
   afterEach(() => {

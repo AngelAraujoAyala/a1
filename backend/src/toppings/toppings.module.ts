@@ -8,4 +8,4 @@ import { PrismaModule } from 'src/prisma/prisma.module';
   controllers: [ToppingsController],
   providers: [ToppingsService],
 })
-export class ToppingsModule { }
+export class ToppingsModule {}

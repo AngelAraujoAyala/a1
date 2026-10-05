@@ -11,7 +11,6 @@ export const Sidebar = () => {
     navigate("/admin/login", { replace: true });
   };
 
-  // Función auxiliar para activar el color naranja si la ruta coincide
   const getLinkClass = (path: string) => {
     const baseClass = "p-3 rounded-lg transition font-medium block";
     return location.pathname === path
@@ -22,7 +21,6 @@ export const Sidebar = () => {
   return (
     <aside className="w-64 bg-gray-900 text-white min-h-screen p-5 flex flex-col justify-between sticky top-0">
       
-      {/* SECCIÓN SUPERIOR: Navegación del negocio */}
       <div>
         <h1 className="text-2xl font-bold mb-10">CrujiSnacks</h1>
 
@@ -41,7 +39,6 @@ export const Sidebar = () => {
         </nav>
       </div>
 
-      {/* SECCIÓN INFERIOR: Configuración y Cuenta */}
       <div className="flex flex-col gap-3 pt-5 border-t border-gray-800">
         <Link to="/admin/configuracion" className={getLinkClass("/admin/configuracion")}>
           ⚙️ Configuración

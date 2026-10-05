@@ -22,7 +22,9 @@ export class AuthService {
     }
 
     const cleanEmail = email.toLowerCase().trim();
-    const admin = await this.prisma.admin.findUnique({ where: { email: cleanEmail } });
+    const admin = await this.prisma.admin.findUnique({
+      where: { email: cleanEmail },
+    });
 
     if (!admin) {
       throw new UnauthorizedException('Credenciales inválidas');
@@ -68,7 +70,9 @@ export class AuthService {
 
     if (data.password && data.password.trim() !== '') {
       if (data.password.length < 8) {
-        throw new BadRequestException('La contraseña debe tener al menos 8 caracteres');
+        throw new BadRequestException(
+          'La contraseña debe tener al menos 8 caracteres',
+        );
       }
       updateData.password = await bcrypt.hash(data.password, 10);
     }
@@ -80,4 +84,3 @@ export class AuthService {
     });
   }
 }
-

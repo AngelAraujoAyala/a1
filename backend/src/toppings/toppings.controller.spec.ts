@@ -4,7 +4,6 @@ import { ToppingsService } from './toppings.service';
 
 describe('ToppingsController', () => {
   let controller: ToppingsController;
-  let service: ToppingsService;
 
   const mockToppingsService = {
     findAll: jest.fn(),
@@ -26,7 +25,6 @@ describe('ToppingsController', () => {
     }).compile();
 
     controller = module.get<ToppingsController>(ToppingsController);
-    service = module.get<ToppingsService>(ToppingsService);
   });
 
   afterEach(() => {
@@ -60,7 +58,7 @@ describe('ToppingsController', () => {
       mockToppingsService.create.mockResolvedValue(expected);
 
       // Act
-      const result = await controller.create(dto as any);
+      const result = await controller.create(dto);
 
       // Assert
       expect(result).toEqual(expected);

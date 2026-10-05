@@ -17,7 +17,7 @@ export const ToppingModal = ({
   onSave,
   isCreating,
 }: Props) => {
-  const [uploading, setUploading] = useState(false); // ✨ Loader exclusivo para la imagen
+  const [uploading, setUploading] = useState(false);
   const [errorLocal, setErrorLocal] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 

@@ -4,7 +4,6 @@ import { PackagesService } from './packages.service';
 
 describe('PackagesController', () => {
   let controller: PackagesController;
-  let service: PackagesService;
 
   const mockPackagesService = {
     create: jest.fn(),
@@ -25,7 +24,6 @@ describe('PackagesController', () => {
     }).compile();
 
     controller = module.get<PackagesController>(PackagesController);
-    service = module.get<PackagesService>(PackagesService);
   });
 
   afterEach(() => {
@@ -39,12 +37,16 @@ describe('PackagesController', () => {
   describe('create', () => {
     it('debe llamar a service.create y retornar el resultado', async () => {
       // Arrange
-      const dto = { nombre: 'Gold', precio: 2000, descripcion: 'Paquete de lujo' };
+      const dto = {
+        nombre: 'Gold',
+        precio: 2000,
+        descripcion: 'Paquete de lujo',
+      };
       const expected = { id: 1, ...dto };
       mockPackagesService.create.mockResolvedValue(expected);
 
       // Act
-      const result = await controller.create(dto as any);
+      const result = await controller.create(dto);
 
       // Assert
       expect(result).toEqual(expected);
@@ -75,7 +77,7 @@ describe('PackagesController', () => {
       mockPackagesService.update.mockResolvedValue(expected);
 
       // Act
-      const result = await controller.update('1', dto as any);
+      const result = await controller.update('1', dto);
 
       // Assert
       expect(result).toEqual(expected);

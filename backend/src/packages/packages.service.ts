@@ -5,7 +5,7 @@ import { UpdatePackageDto } from './dto/update-package.dto';
 
 @Injectable()
 export class PackagesService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   create(createPackageDto: CreatePackageDto) {
     return this.prisma.package.create({

@@ -11,30 +11,30 @@ import { ReservaEstado } from '@prisma/client';
 
 export class CreateReservationDto {
   @IsString()
-  nombreCliente: string;
+  nombreCliente!: string;
 
   @IsString()
-  emailCliente: string;
+  emailCliente!: string;
 
   @IsString()
-  telefono: string;
+  telefono!: string;
 
   @IsDateString()
-  fechaInicio: string;
+  fechaInicio!: string;
 
   @IsDateString()
-  fechaFin: string;
+  fechaFin!: string;
 
   @IsString()
-  lugar: string;
+  lugar!: string;
 
   @IsNumber()
-  packageId: number;
+  packageId!: number;
 
   @IsOptional()
   @IsEnum(ReservaEstado)
   estado?: ReservaEstado;
 
   @IsArray()
-  toppingsIds: number[];
+  toppingsIds!: number[];
 }

@@ -1,11 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ReservationsService } from './reservations.service';
 import { PrismaService } from '../prisma/prisma.service';
-import { ConflictException, BadRequestException, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  BadRequestException,
+  NotFoundException,
+} from '@nestjs/common';
 
 describe('ReservationsService', () => {
   let service: ReservationsService;
-  let prisma: PrismaService;
 
   const mockPrismaService = {
     reservation: {
@@ -36,7 +39,6 @@ describe('ReservationsService', () => {
     }).compile();
 
     service = module.get<ReservationsService>(ReservationsService);
-    prisma = module.get<PrismaService>(PrismaService);
   });
 
   afterEach(() => {
@@ -64,15 +66,19 @@ describe('ReservationsService', () => {
       mockPrismaService.reservation.findFirst.mockResolvedValue(null);
       mockPrismaService.bloqueoFecha.findMany.mockResolvedValue([]);
       const expectedReservation = { id: 10, ...validDto, estado: 'PENDIENTE' };
-      mockPrismaService.reservation.create.mockResolvedValue(expectedReservation);
+      mockPrismaService.reservation.create.mockResolvedValue(
+        expectedReservation,
+      );
 
       // Act
-      const result = await service.create(validDto as any);
+      const result = await service.create(validDto);
 
       // Assert
       expect(result).toEqual(expectedReservation);
       expect(mockPrismaService.reservation.findFirst).toHaveBeenCalled();
-      expect(mockPrismaService.bloqueoFecha.findMany).toHaveBeenCalledWith({ where: { activo: true } });
+      expect(mockPrismaService.bloqueoFecha.findMany).toHaveBeenCalledWith({
+        where: { activo: true },
+      });
       expect(mockPrismaService.reservation.create).toHaveBeenCalled();
     });
 
@@ -85,15 +91,22 @@ describe('ReservationsService', () => {
       };
 
       // Act & Assert
-      await expect(service.create(invalidDto as any)).rejects.toThrow(BadRequestException);
+      await expect(service.create(invalidDto as any)).rejects.toThrow(
+        BadRequestException,
+      );
     });
 
     it('debe lanzar ConflictException si existe solapamiento de horario (Negativo)', async () => {
       // Arrange
-      mockPrismaService.reservation.findFirst.mockResolvedValue({ id: 99, nombreCliente: 'Existente' });
+      mockPrismaService.reservation.findFirst.mockResolvedValue({
+        id: 99,
+        nombreCliente: 'Existente',
+      });
 
       // Act & Assert
-      await expect(service.create(validDto as any)).rejects.toThrow(ConflictException);
+      await expect(service.create(validDto as any)).rejects.toThrow(
+        ConflictException,
+      );
       expect(mockPrismaService.reservation.findFirst).toHaveBeenCalled();
     });
 
@@ -105,7 +118,9 @@ describe('ReservationsService', () => {
       ]);
 
       // Act & Assert
-      await expect(service.create(validDto as any)).rejects.toThrow(ConflictException);
+      await expect(service.create(validDto as any)).rejects.toThrow(
+        ConflictException,
+      );
     });
   });
 
@@ -175,7 +190,9 @@ describe('ReservationsService', () => {
       // Arrange
       const mockRes = { id: 1 };
       mockPrismaService.reservation.findUnique.mockResolvedValue(mockRes);
-      mockPrismaService.reservaTopping.deleteMany.mockResolvedValue({ count: 2 });
+      mockPrismaService.reservaTopping.deleteMany.mockResolvedValue({
+        count: 2,
+      });
       mockPrismaService.reservation.delete.mockResolvedValue(mockRes);
 
       // Act
@@ -183,8 +200,12 @@ describe('ReservationsService', () => {
 
       // Assert
       expect(result).toEqual(mockRes);
-      expect(mockPrismaService.reservaTopping.deleteMany).toHaveBeenCalledWith({ where: { reservaId: 1 } });
-      expect(mockPrismaService.reservation.delete).toHaveBeenCalledWith({ where: { id: 1 } });
+      expect(mockPrismaService.reservaTopping.deleteMany).toHaveBeenCalledWith({
+        where: { reservaId: 1 },
+      });
+      expect(mockPrismaService.reservation.delete).toHaveBeenCalledWith({
+        where: { id: 1 },
+      });
     });
   });
 });
